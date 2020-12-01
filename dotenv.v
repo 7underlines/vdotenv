@@ -9,7 +9,6 @@ pub fn load() {
 	if !os.exists(file) {
 		return
 	}
-	
 	mut f := os.open_file(file, 'r', 0) or {
 		return
 	}
@@ -23,13 +22,17 @@ pub fn load() {
 		line := reader.read_line() or {
 			break
 		}
-		parse_dot_env_line(line.trim_space())
+		parse_line(line.trim_space())
 	}
 }
 
-fn parse_dot_env_line(line string) {
+fn parse_line(line string) {
 	arr := line.split('=')
 	if arr.len != 2 {
+		return
+	}
+	part := arr[0].trim_space()
+	if part.len < 1 || part[0..1] == '#' {
 		return
 	}
 	os.setenv(arr[0].trim_space(), 

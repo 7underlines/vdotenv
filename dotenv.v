@@ -4,8 +4,7 @@ import os
 import io
 
 pub fn load() {
-	file := os.dir(os.executable()) + os.path_separator
-	+ '.env'
+	file := os.dir(os.executable()) + os.path_separator + '.env'
 	if !os.exists(file) {
 		return
 	}
@@ -35,6 +34,5 @@ fn parse_line(line string) {
 	if part.len < 1 || part[0..1] == '#' {
 		return
 	}
-	os.setenv(arr[0].trim_space(), 
-	arr[1].trim_space(), true)
+	os.setenv(arr[0].trim_space(), arr[1].trim_space(), true)
 }

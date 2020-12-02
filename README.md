@@ -18,12 +18,12 @@ These syntax rules apply to the .env file:
 v install logtom.dotenv
 ```
 Create a file called .env in the root folder of your application.
+Add it to your .gitignore file.
 Fill it with key=value pairs.
 Example:
 POSTGRES_HOST = localhost
-Add it to your .gitignore file.
 
-... then in your v source:
+Then in your v source:
 ```v
 module main
 

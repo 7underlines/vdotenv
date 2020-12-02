@@ -15,7 +15,7 @@ These syntax rules apply to the .env file:
 
 ## Usage:
 ```shell
-v install logtom.dotenv
+v install logTom.dotenv
 ```
 Create a file called .env in the root folder of your application.
 Add it to your .gitignore file.

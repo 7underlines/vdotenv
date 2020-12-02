@@ -1,10 +1,9 @@
 # V dotenv
 
-https://docs.docker.com/compose/environment-variables/#the-env_file-configuration-option
+People configure their app variables via JSON, YAML, or even gitignored .v files. I personally found env files to work the best, especially with [docker-compose](https://docs.docker.com/compose/environment-variables/#the-env_file-configuration-option).
 
-https://docs.docker.com/compose/env-file/
+Further reading:
 [12 factor apps](https://12factor.net/config)
-
 ## Syntax rules
 
 These syntax rules apply to the .env file:
@@ -14,13 +13,14 @@ These syntax rules apply to the .env file:
 - Blank lines are ignored.
 - There is no special handling of quotation marks. This means that they are part of the VAL.
 
-
 ## Usage:
 ```shell
 v install logtom.dotenv
 ```
 Create a file called .env in the root folder of your application.
 Fill it with key=value pairs.
+Example:
+POSTGRES_HOST = localhost
 Add it to your .gitignore file.
 
 ... then in your v source:
@@ -28,12 +28,18 @@ Add it to your .gitignore file.
 module main
 
 import logtom.dotenv
+import os
 
 fn main(){
     dotenv.load()
-    
+    println(os.getenv('POSTGRES_HOST'))
 }
 ```
+
+## Todo
+- create example .env file on module installation
+- auto add .env to .gitignore
+- required method to let people know what variables are needed
 
 ## License
 [GPL-3.0](LICENSE)

@@ -12,8 +12,15 @@ v install logTom.dotenv
 Create a file called .env in the root folder of your application.
 Add it to your .gitignore file.
 Fill it with key=value pairs.
-Example:
-POSTGRES_HOST = localhost
+
+```shell
+POSTGRES_HOST     = localhost
+POSTGRES_USER     = admin
+POSTGRES_PASSWORD = postgres_password_goes_here
+POSTGRES_DB       = admin
+
+JWT_SECRET = jwt_secret_goes_here
+```
 
 Then in your v source:
 ```v
@@ -37,9 +44,9 @@ These syntax rules apply to the .env file:
 - There is no special handling of quotation marks. This means that they are part of the VAL.
 
 ## Todo
-- create example .env file on module installation
+- auto add example .env file
 - auto add .env to .gitignore
-- required method to let people know what variables are needed
+- dotenv.required() method to let people know what variables are needed
 
 ## License
 [GPL-3.0](LICENSE)

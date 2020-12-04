@@ -1,6 +1,6 @@
 Module {
 	name: 'dotenv'
-	description: 'A simple .env file parser.'
-	version: '1.0.0'
+	description: 'Loads environment variables from `.env` to `os.getenv()` automagically.'
+	version: '1.1.0'
 	dependencies: []
 }

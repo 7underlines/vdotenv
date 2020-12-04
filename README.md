@@ -30,7 +30,7 @@ import logtom.dotenv
 import os
 
 fn main() 
-	// load .env environment file
+    // load .env environment file
     dotenv.load()
     // you can use build in os.getenv()
     println(os.getenv('POSTGRES_HOST'))

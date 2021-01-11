@@ -4,16 +4,12 @@ People configure their app variables via JSON, YAML, or even gitignored .v files
 Further reading:
 [12 factor apps](https://12factor.net/config)
 
-# Features
+## Features
 
 - fully compatible with docker-compose .env
 - useful helper function dotenv.get()
 
-# Usage:
-```shell
-v install treffner.dotenv
-```
-
+## Usage
 Create a file called .env in the root folder of your application.
 Add it to your .gitignore file. (best practice)
 Fill it with key=value pairs.
@@ -31,7 +27,7 @@ Then in your v source:
 ```v
 module main
 
-import treffner.dotenv
+import logtom.dotenv
 import os
 
 fn main() 
@@ -56,6 +52,23 @@ These syntax rules apply to the .env file:
 - There is no special handling of quotation marks. This means that they are part of the VAL.
 - Environment variables may not contain whitespace.
 
+## Installation
+Install and use dotenv module via VPM:
+```shell
+v install logTom.dotenv
+```
+<!--
+Or via [vpkg](https://github.com/vpkg-project/vpkg):
+
+ ```shell
+vpkg get https://github.com/treffner/vdotenv --global
+``` -->
+
+Or through Git:
+```shell
+git clone https://github.com/treffner/vdotenv.git ~/.vmodules/logtom/dotenv
+```
+
 ## Test with docker-compose
 ```shell
 docker-compose run --rm v
@@ -63,8 +76,10 @@ println(os.getenv('POSTGRES_HOST'))
 ```
 This should print "localhost".
 
-# Todo/ideas
+## Todo/ideas
+- rename from logTom.dotenv to treffner.dotenv in vpm
+- test installation via vpkg
 - dotenv.required() method to let people know what variables are needed
 
-# License
+## License
 [GPL-3.0](LICENSE)

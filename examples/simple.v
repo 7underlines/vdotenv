@@ -1,4 +1,4 @@
-import dotenv
+import logtom.dotenv
 import os
 
 fn main() {

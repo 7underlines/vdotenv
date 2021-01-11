@@ -1,28 +1,35 @@
 module dotenv
 
 import os
-import io
+// import io
 
 pub fn load() {
 	file := os.dir(os.executable()) + os.path_separator + '.env'
 	if !os.exists(file) {
 		return
 	}
-	mut f := os.open_file(file, 'r', 0) or {
+	contents := os.read_file(file) or {
 		return
 	}
-	defer {
-		f.close()
-	}
-	mut reader := io.new_buffered_reader({
-		reader: io.make_reader(f)
-	})
-	for {
-		line := reader.read_line() or {
-			break
-		}
+	lines := contents.split_into_lines()
+	for line in lines {
 		parse_line(line.trim_space())
 	}
+	// mut f := os.open_file(file, 'r', 0) or {
+	// 	return
+	// }
+	// defer {
+	// 	f.close()
+	// }
+	// mut reader := io.new_buffered_reader({
+	// 	reader: io.make_reader(f)
+	// })
+	// for {
+	// 	line := reader.read_line() or {
+	// 		break
+	// 	}
+	// 	parse_line(line.trim_space())
+	// }
 }
 
 fn parse_line(line string) {

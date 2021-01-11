@@ -1,0 +1,6 @@
+version: '3'
+services:
+  v:
+    image: taojy123/vlang
+    env_file:
+     - .env

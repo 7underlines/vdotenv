@@ -4,29 +4,34 @@ People configure their app variables via JSON, YAML, or even gitignored .v files
 Further reading:
 [12 factor apps](https://12factor.net/config)
 
-## Usage:
+# Features
+
+- fully compatible with docker-compose .env
+- useful helper function dotenv.get()
+
+# Usage:
 ```shell
-v install logTom.dotenv
+v install treffner.dotenv
 ```
 
 Create a file called .env in the root folder of your application.
-Add it to your .gitignore file.
+Add it to your .gitignore file. (best practice)
 Fill it with key=value pairs.
 
 ```shell
-POSTGRES_HOST     = localhost
-POSTGRES_USER     = admin
-POSTGRES_PASSWORD = postgres_password_goes_here
-POSTGRES_DB       = admin
+POSTGRES_HOST=localhost
+POSTGRES_USER=admin
+POSTGRES_PASSWORD=postgres_password_goes_here
+POSTGRES_DB=admin
 
-JWT_SECRET = jwt_secret_goes_here
+JWT_SECRET=jwt_secret_goes_here
 ```
 
 Then in your v source:
 ```v
 module main
 
-import logtom.dotenv
+import treffner.dotenv
 import os
 
 fn main() 
@@ -49,11 +54,17 @@ These syntax rules apply to the .env file:
 - Lines beginning with # are processed as comments and ignored.
 - Blank lines are ignored.
 - There is no special handling of quotation marks. This means that they are part of the VAL.
+- Environment variables may not contain whitespace.
 
-## Todo
-- auto add example .env file
-- auto add .env to .gitignore
+## Test with docker-compose
+```shell
+docker-compose run --rm v
+println(os.getenv('POSTGRES_HOST'))
+```
+This should print "localhost".
+
+# Todo/ideas
 - dotenv.required() method to let people know what variables are needed
 
-## License
+# License
 [GPL-3.0](LICENSE)

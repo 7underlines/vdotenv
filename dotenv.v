@@ -1,16 +1,14 @@
 module dotenv
 
 import os
-// import io
 
+// import io
 pub fn load() {
 	file := os.dir(os.executable()) + os.path_separator + '.env'
 	if !os.exists(file) {
 		return
 	}
-	contents := os.read_file(file) or {
-		return
-	}
+	contents := os.read_file(file) or { return }
 	lines := contents.split_into_lines()
 	for line in lines {
 		parse_line(line.trim_space())
@@ -60,7 +58,7 @@ pub fn fallback_get(key string, fallback string) string {
 
 pub fn must_get(key string) string {
 	if os.getenv(key) == '' {
-		//panic('failed to get variable $key')
+		// panic('failed to get variable $key')
 		println('error: failed to get required environment variable $key')
 		exit(1)
 	}

@@ -30,7 +30,7 @@ module main
 import treffner.vdotenv
 import os
 
-fn main() 
+fn main() {
     // load .env environment file
     vdotenv.load()
     // you can use build in os.getenv()

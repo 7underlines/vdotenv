@@ -7,7 +7,7 @@ Further reading:
 ## Features
 
 - fully compatible with docker-compose .env
-- useful helper function dotenv.get()
+- useful helper function vdotenv.get()
 
 ## Usage
 Create a file called .env in the root folder of your application.
@@ -35,7 +35,7 @@ fn main() {
     vdotenv.load()
     // you can use build in os.getenv()
     println(os.getenv('POSTGRES_HOST'))
-    // you can also use dotenv.get() if you need fallback handling
+    // you can also use vdotenv.get() if you need fallback handling
     secret := vdotenv.get('JWT_SECRET') or {
         'default_dev_token' // default, not found, or simply the same on all environments
     }
@@ -46,7 +46,7 @@ fn main() {
 ## Syntax rules
 These syntax rules apply to the .env file:
 
-- Dotenv expects each line in an env file to be in VAR=VAL format.
+- vdotenv expects each line in an env file to be in VAR=VAL format.
 - Lines beginning with # are processed as comments and ignored.
 - Blank lines are ignored.
 - There is no special handling of quotation marks. This means that they are part of the VAL.

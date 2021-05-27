@@ -8,6 +8,7 @@ Further reading:
 
 - fully compatible with docker-compose .env
 - useful helper function vdotenv.get()
+- vdotenv.required() method to let people know what variables are needed
 
 ## Usage
 Create a file called .env in the root folder of your application.

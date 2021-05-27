@@ -78,7 +78,16 @@ This should print "localhost".
 
 ## Todo/ideas
 - test installation via vpkg
-- vdotenv.required() method to let people know what variables are needed
+- ~~vdotenv.required() method to let people know what variables are needed~~
+
+Example for vdotenv.required()
+```v
+vdotenv.load()
+vdotenv.required('POSTGRES_HOST', 'POSTGRES_USER', 'POSTGRES_PASSWORD', 'POSTGRES_DB')
+```
+```shell
+error: failed to get required environment variable POSTGRES_HOST
+```
 
 ## License
 [GPL-3.0](LICENSE)

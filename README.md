@@ -34,7 +34,8 @@ import os
 fn main() {
     // load .env environment file
     vdotenv.load()
-    vdotenv.required('POSTGRES_HOST', 'POSTGRES_USER', 'POSTGRES_PASSWORD', 'POSTGRES_DB') // optional - error if these are not set
+    // optional check if required keys have values - error if something is missing
+    vdotenv.required('POSTGRES_HOST', 'POSTGRES_USER', 'POSTGRES_PASSWORD', 'POSTGRES_DB')
     // you can use build in os.getenv()
     println(os.getenv('POSTGRES_HOST'))
     // you can also use vdotenv.get() if you need fallback handling

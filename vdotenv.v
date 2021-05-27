@@ -48,3 +48,9 @@ pub fn must_get(key string) string {
 	}
 	return os.getenv(key)
 }
+
+pub fn required(required_keys ...string) {
+	for key in required_keys {
+		must_get(key)
+	}
+}

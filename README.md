@@ -77,6 +77,7 @@ git clone https://github.com/treffner/vdotenv.git ~/.vmodules/treffner/vdotenv
 ```
 
 ## Test with docker-compose
+Clone this repository and execute this commands while in the cloned folder.
 ```shell
 docker-compose run --rm v
 println(os.getenv('POSTGRES_HOST'))

@@ -55,7 +55,7 @@ These syntax rules apply to the .env file:
 - There is no special handling of quotation marks. This means that they are part of the VAL.
 - Environment variables may not contain whitespace.
 
-Note that there is also another dotenv module with possibly more relaxed syntax rules available 
+Note that there is also another dotenv module with more relaxed syntax rules (eg. inline comments) available 
 https://vpm.vlang.io/mod/zztkm.vdotenv.  
 We cannot relax these because we would lose docker .env compatibility.
 

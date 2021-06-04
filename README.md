@@ -97,6 +97,7 @@ vdotenv.required('POSTGRES_HOST', 'POSTGRES_USER', 'POSTGRES_PASSWORD', 'POSTGRE
 error: failed to get required environment variable POSTGRES_HOST
 ```
 - vdotenv.required_example() method to give people examples how the required variables should look like
+- .env export compatibility (valid since docker 1.26)
 
 ## License
 [GPL-3.0](LICENSE)

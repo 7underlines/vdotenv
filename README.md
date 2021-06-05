@@ -100,4 +100,4 @@ error: failed to get required environment variable POSTGRES_HOST
 - .env export compatibility (valid since docker 1.26)
 
 ## License
-[GPL-3.0](LICENSE)
+[AGPL-3.0](LICENSE)

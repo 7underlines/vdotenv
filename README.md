@@ -9,7 +9,7 @@ Further reading:
 - fully compatible with docker-compose .env
 - useful helper function vdotenv.get()
 - vdotenv.required() method to let people know what variables are needed
-- automatically create missing .env file with blank required fields when working with vdotenv.required() 
+- automatically create missing .env file with blank required fields when working with vdotenv.required() for an easy setup
 
 ## Usage
 Create a file called .env in the root folder of your application.
@@ -36,6 +36,7 @@ fn main() {
     // load .env environment file
     vdotenv.load()
     // optional check if required keys have values - error if something is missing
+    // this also creates the .env file with the requested variables for an easy setup
     vdotenv.required('POSTGRES_HOST', 'POSTGRES_USER', 'POSTGRES_PASSWORD', 'POSTGRES_DB')
     // you can use build in os.getenv()
     println(os.getenv('POSTGRES_HOST'))

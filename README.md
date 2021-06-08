@@ -98,6 +98,7 @@ error: failed to get required environment variable POSTGRES_HOST
 ```
 - vdotenv.required_example() method to give people examples how the required variables should look like
 - .env export compatibility (valid since docker 1.26)
+- create missing .env file with required fields when working with vdotenv.required() 
 
 ## License
 [AGPL-3.0](LICENSE)

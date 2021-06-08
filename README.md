@@ -9,6 +9,7 @@ Further reading:
 - fully compatible with docker-compose .env
 - useful helper function vdotenv.get()
 - vdotenv.required() method to let people know what variables are needed
+- create missing .env file with required fields when working with vdotenv.required() 
 
 ## Usage
 Create a file called .env in the root folder of your application.
@@ -86,19 +87,8 @@ This should print "localhost".
 
 ## Todo/ideas
 - test installation via vpkg
-- ~~vdotenv.required() method to let people know what variables are needed~~
-
-Example for vdotenv.required()
-```v
-vdotenv.load()
-vdotenv.required('POSTGRES_HOST', 'POSTGRES_USER', 'POSTGRES_PASSWORD', 'POSTGRES_DB')
-```
-```shell
-error: failed to get required environment variable POSTGRES_HOST
-```
 - vdotenv.required_example() method to give people examples how the required variables should look like
 - .env export compatibility (valid since docker 1.26)
-- create missing .env file with required fields when working with vdotenv.required() 
 
 ## License
 [AGPL-3.0](LICENSE)

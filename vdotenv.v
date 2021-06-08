@@ -42,7 +42,6 @@ pub fn fallback_get(key string, fallback string) string {
 
 pub fn must_get(key string) string {
 	if os.getenv(key) == '' {
-		// panic('failed to get variable $key')
 		println('error: failed to get required environment variable $key')
 		exit(1)
 	}
@@ -50,7 +49,27 @@ pub fn must_get(key string) string {
 }
 
 pub fn required(required_keys ...string) {
+	mut missing_keys := []string{}
+	mut content := ''
 	for key in required_keys {
-		must_get(key)
+		if os.getenv(key) == '' {
+			missing_keys << key
+			content += key + '=\n'
+		}
+	}
+	if missing_keys.len > 0 {
+		mut multi := 'variables'
+		if missing_keys.len == 1 {
+			multi = 'variable'
+		}
+		println('error: failed to get required environment $multi: $missing_keys')
+		file := os.dir(os.executable()) + os.path_separator + '.env'
+		if !os.exists(file) {
+			os.write_file(file, content) or {
+				exit(1)
+			}
+			println('created .env file with blank required fields') // maybe add something like - please fill in your data
+		}
+		exit(1)
 	}
 }

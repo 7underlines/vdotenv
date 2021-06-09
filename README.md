@@ -62,7 +62,24 @@ https://vpm.vlang.io/mod/zztkm.vdotenv.
 We cannot relax these because we would lose docker .env compatibility.
 
 ## Installation
-Install and use vdotenv module via VPM:
+
+### Install and use vdotenv module as a dependency via v.mod (recommended)
+
+Run "v init" to auto-generate your v.mod file.
+```shell
+v init
+```
+Then edit the dependencies in your v.mod file to look like this: 
+```v
+dependencies: ['treffner.vdotenv']
+```
+And install with:
+```shell
+v install
+```
+To update your dependencies later just run "v install" again.
+
+### Or via VPM:
 ```shell
 v install treffner.vdotenv
 ```
@@ -73,7 +90,7 @@ Or via [vpkg](https://github.com/vpkg-project/vpkg):
 vpkg get https://github.com/treffner/vdotenv --global
 ``` -->
 
-Or through Git:
+### Or through Git:
 ```shell
 git clone https://github.com/treffner/vdotenv.git ~/.vmodules/treffner/vdotenv
 ```

@@ -24,6 +24,7 @@ POSTGRES_PASSWORD=postgres_password_goes_here
 POSTGRES_DB=admin
 
 JWT_SECRET=jwt_secret_goes_here
+export NODE_ENV=development
 ```
 
 Then in your v source:

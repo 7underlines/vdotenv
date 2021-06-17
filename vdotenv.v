@@ -2,6 +2,7 @@ module vdotenv
 
 import os
 
+// load parses the .env environment file
 pub fn load() {
 	file := os.dir(os.executable()) + os.path_separator + '.env'
 	if !os.exists(file) {
@@ -26,6 +27,7 @@ fn parse_line(line string) {
 	os.setenv(arr[0].trim_space(), arr[1].trim_space(), true)
 }
 
+// get is an alternative to os.getenv when you need fallback handling
 pub fn get(key string) ?string {
 	if os.getenv(key) == '' {
 		return error('key is empty')
@@ -33,6 +35,7 @@ pub fn get(key string) ?string {
 	return os.getenv(key)
 }
 
+// use fallback_get if you prefer traditional fallback handling
 pub fn fallback_get(key string, fallback string) string {
 	if os.getenv(key) != '' {
 		return os.getenv(key)
@@ -40,6 +43,7 @@ pub fn fallback_get(key string, fallback string) string {
 	return fallback
 }
 
+// must_get errors out if key does not exist
 pub fn must_get(key string) string {
 	if os.getenv(key) == '' {
 		println('error: failed to get required environment variable $key')
@@ -48,6 +52,7 @@ pub fn must_get(key string) string {
 	return os.getenv(key)
 }
 
+// required checks if given keys have values - errors out if something is missing - also creates the .env file with the given variables for an easy setup
 pub fn required(required_keys ...string) {
 	mut missing_keys := []string{}
 	mut content := ''

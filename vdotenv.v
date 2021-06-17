@@ -24,7 +24,13 @@ fn parse_line(line string) {
 	if part.len < 1 || part[0..1] == '#' {
 		return
 	}
-	os.setenv(arr[0].trim_space(), arr[1].trim_space(), true)
+	
+	// export is valid since docker-compose 1.26 eg. export NODE_ENV=development
+	if arr[0].trim_space()[0..7] == 'export ' { 
+		os.setenv(arr[0].trim_space()[7..], arr[1].trim_space(), true)
+	} else {
+		os.setenv(arr[0].trim_space(), arr[1].trim_space(), true)
+	}
 }
 
 // get is an alternative to os.getenv when you need fallback handling

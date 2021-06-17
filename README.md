@@ -10,7 +10,7 @@ Further reading:
 - useful helper function vdotenv.get()
 - vdotenv.required() method to let people know what variables are needed
 - automatically create missing .env file with blank required fields when working with vdotenv.required() for an easy setup
-- support "export" keyword so you can "source .env" in your project specific shell scripts
+- support `export` keyword so you can `source .env` in your project specific shell scripts
 
 ## Usage
 Create a file called .env in the root folder of your application.

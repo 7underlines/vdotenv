@@ -10,6 +10,7 @@ Further reading:
 - useful helper function vdotenv.get()
 - vdotenv.required() method to let people know what variables are needed
 - automatically create missing .env file with blank required fields when working with vdotenv.required() for an easy setup
+- support "export" keyword so you can "source .env" in your project specific shell scripts
 
 ## Usage
 Create a file called .env in the root folder of your application.
@@ -56,6 +57,7 @@ These syntax rules apply to the .env file:
 - Blank lines are ignored.
 - There is no special handling of quotation marks. This means that they are part of the VAL.
 - Environment variables may not contain whitespace.
+- Since docker-compose 1.26+ also allow "export VAL=VAR" 
 
 Note that there is also another dotenv module with more relaxed syntax rules (eg. inline comments) available 
 https://vpm.vlang.io/mod/zztkm.vdotenv.  
@@ -106,7 +108,6 @@ This should print "localhost".
 ## Todo/ideas
 - test installation via vpkg
 - vdotenv.required_example() method to give people examples how the required variables should look like
-- .env export compatibility (valid since docker 1.26)
 
 # Module documentation
 

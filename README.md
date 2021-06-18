@@ -109,6 +109,8 @@ This should print "localhost".
 ## Todo/ideas
 - test installation via vpkg
 - vdotenv.required_example() method to give people examples how the required variables should look like
+- improve readme like https://github.com/bkeepers/dotenv
+- add other .env files like .env.production
 
 # Module documentation
 

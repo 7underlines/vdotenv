@@ -4,7 +4,16 @@ import os
 
 // load parses the .env environment file
 pub fn load() {
-	file := os.dir(os.executable()) + os.path_separator + '.env'
+	load_file('.env')
+}
+
+// loads the given .env file eg. .env.test
+pub fn load_file(filename string) {
+	if filename == '' {
+		return
+	}
+	path := $if test { os.getwd() } $else { os.dir(os.executable()) }
+	file := path + os.path_separator + filename
 	if !os.exists(file) {
 		return
 	}
@@ -24,9 +33,9 @@ fn parse_line(line string) {
 	if part.len < 1 || part[0..1] == '#' {
 		return
 	}
-	
+
 	// export is valid since docker-compose 1.26 eg. export NODE_ENV=development
-	if arr[0].trim_space().len > 6 && arr[0].trim_space()[0..7] == 'export ' { 
+	if arr[0].trim_space().len > 6 && arr[0].trim_space()[0..7] == 'export ' {
 		os.setenv(arr[0].trim_space()[7..], arr[1].trim_space(), true)
 	} else {
 		os.setenv(arr[0].trim_space(), arr[1].trim_space(), true)
@@ -76,9 +85,7 @@ pub fn required(required_keys ...string) {
 		println('error: failed to get required environment $multi: $missing_keys')
 		file := os.dir(os.executable()) + os.path_separator + '.env'
 		if !os.exists(file) {
-			os.write_file(file, content) or {
-				exit(1)
-			}
+			os.write_file(file, content) or { exit(1) }
 			println('created .env file with blank required fields') // maybe add something like - please fill in your data
 		}
 		exit(1)

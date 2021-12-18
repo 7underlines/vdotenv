@@ -7,7 +7,7 @@ pub fn load() {
 	load_file('.env')
 }
 
-// loads the given .env file eg. .env.test
+// loads_file parses the given .env environment file
 pub fn load_file(filename string) {
 	if filename == '' {
 		return

@@ -118,6 +118,7 @@ This should print "localhost".
 - [fallback_get](#fallback_get)
 - [get](#get)
 - [load](#load)
+- [load_file](#load_file)
 - [must_get](#must_get)
 - [required](#required)
 
@@ -125,7 +126,8 @@ This should print "localhost".
 ```v
 fn fallback_get(key string, fallback string) string
 ```
- use fallback_get if you prefer traditional fallback handling 
+
+use fallback_get if you prefer traditional fallback handling
 
 [[Return to contents]](#Contents)
 
@@ -133,7 +135,8 @@ fn fallback_get(key string, fallback string) string
 ```v
 fn get(key string) ?string
 ```
- get is an alternative to os.getenv when you need fallback handling 
+
+get is an alternative to os.getenv when you need fallback handling
 
 [[Return to contents]](#Contents)
 
@@ -141,7 +144,17 @@ fn get(key string) ?string
 ```v
 fn load()
 ```
- load parses the .env environment file 
+
+load parses the .env environment file
+
+[[Return to contents]](#Contents)
+
+## load_file
+```v
+fn load_file(filename string)
+```
+
+loads_file parses the given .env environment file
 
 [[Return to contents]](#Contents)
 
@@ -149,7 +162,8 @@ fn load()
 ```v
 fn must_get(key string) string
 ```
- must_get errors out if key does not exist 
+
+must_get errors out if key does not exist
 
 [[Return to contents]](#Contents)
 
@@ -157,11 +171,12 @@ fn must_get(key string) string
 ```v
 fn required(required_keys ...string)
 ```
- required checks if given keys have values - errors out if something is missing - also creates the .env file with the given variables for an easy setup 
+
+required checks if given keys have values - errors out if something is missing - also creates the .env file with the given variables for an easy setup
 
 [[Return to contents]](#Contents)
 
-#### Powered by vdoc. Generated on: 17 Jun 2021 16:23:18
+#### Powered by vdoc. Generated on: 18 Dec 2021 18:47:02
 
 ## License
 [AGPL-3.0](LICENSE)

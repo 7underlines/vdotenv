@@ -82,7 +82,7 @@ pub fn required(required_keys ...string) {
 		if missing_keys.len == 1 {
 			multi = 'variable'
 		}
-		println('error: failed to get required environment $multi: $missing_keys')
+		eprintln('error: failed to get required environment $multi: $missing_keys')
 		file := os.dir(os.executable()) + os.path_separator + '.env'
 		if !os.exists(file) {
 			os.write_file(file, content) or { exit(1) }
@@ -90,4 +90,10 @@ pub fn required(required_keys ...string) {
 		}
 		exit(1)
 	}
+}
+
+// require loads and checks for gives keys
+pub fn require(required_keys ...string) {
+	load()
+	required(...required_keys)
 }

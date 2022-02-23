@@ -120,6 +120,7 @@ This should print "localhost".
 - [load](#load)
 - [load_file](#load_file)
 - [must_get](#must_get)
+- [require](#require)
 - [required](#required)
 
 ## fallback_get
@@ -167,6 +168,15 @@ must_get errors out if key does not exist
 
 [[Return to contents]](#Contents)
 
+## require
+```v
+fn require(required_keys ...string)
+```
+
+require loads and checks for gives keys
+
+[[Return to contents]](#Contents)
+
 ## required
 ```v
 fn required(required_keys ...string)
@@ -176,7 +186,7 @@ required checks if given keys have values - errors out if something is missing -
 
 [[Return to contents]](#Contents)
 
-#### Powered by vdoc. Generated on: 18 Dec 2021 18:47:02
+#### Powered by vdoc. Generated on: 23 Feb 2022 16:39:37
 
 ## License
 [AGPL-3.0](LICENSE)

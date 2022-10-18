@@ -40,7 +40,7 @@ fn main() {
     // optional check if required keys have values - error if something is missing
     // this also creates the .env file with the requested variables for an easy setup
     vdotenv.required('POSTGRES_HOST', 'POSTGRES_USER', 'POSTGRES_PASSWORD', 'POSTGRES_DB')
-    // you can use build in os.getenv()
+    // you can use build-in os.getenv()
     println(os.getenv('POSTGRES_HOST'))
     // you can also use vdotenv.get() if you need fallback handling
     secret := vdotenv.get('JWT_SECRET') or {
@@ -86,16 +86,10 @@ To update your dependencies later just run "v install" again.
 ```shell
 v install treffner.vdotenv
 ```
-<!--
-Or via [vpkg](https://github.com/vpkg-project/vpkg):
-
- ```shell
-vpkg get https://github.com/treffner/vdotenv --global
-``` -->
 
 ### Or through Git:
 ```shell
-git clone https://github.com/treffner/vdotenv.git ~/.vmodules/treffner/vdotenv
+git clone https://github.com/thomaspeissl/vdotenv.git ~/.vmodules/treffner/vdotenv
 ```
 
 ## Test with docker-compose
@@ -106,11 +100,6 @@ println(os.getenv('POSTGRES_HOST'))
 ```
 This should print "localhost".
 
-## Todo/ideas
-- test installation via vpkg
-- vdotenv.required_example() method to give people examples how the required variables should look like
-- improve readme like https://github.com/bkeepers/dotenv
-- add other .env files like .env.production
 
 # Module documentation
 

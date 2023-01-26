@@ -43,7 +43,7 @@ fn parse_line(line string) {
 }
 
 // get is an alternative to os.getenv when you need fallback handling
-pub fn get(key string) ?string {
+pub fn get(key string) !string {
 	if os.getenv(key) == '' {
 		return error('key is empty')
 	}
@@ -61,7 +61,7 @@ pub fn fallback_get(key string, fallback string) string {
 // must_get errors out if key does not exist
 pub fn must_get(key string) string {
 	if os.getenv(key) == '' {
-		println('error: failed to get required environment variable $key')
+		println('error: failed to get required environment variable ${key}')
 		exit(1)
 	}
 	return os.getenv(key)
@@ -82,7 +82,7 @@ pub fn required(required_keys ...string) {
 		if missing_keys.len == 1 {
 			multi = 'variable'
 		}
-		eprintln('error: failed to get required environment $multi: $missing_keys')
+		eprintln('error: failed to get required environment ${multi}: ${missing_keys}')
 		file := os.dir(os.executable()) + os.path_separator + '.env'
 		if !os.exists(file) {
 			os.write_file(file, content) or { exit(1) }

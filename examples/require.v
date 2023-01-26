@@ -2,8 +2,8 @@ import treffner.vdotenv
 import os
 
 fn main() {
-	// load .env environment file, error if the required vars are not found 
-	// also create a placeholder .env file if none found 
+	// load .env environment file, error if the required vars are not found
+	// also create a placeholder .env file if none found
 	vdotenv.require('POSTGRES_HOST', 'JWT_SECRET')
 	// you can use build in os.getenv()
 	println(os.getenv('POSTGRES_HOST'))

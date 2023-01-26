@@ -123,7 +123,7 @@ use fallback_get if you prefer traditional fallback handling
 
 ## get
 ```v
-fn get(key string) ?string
+fn get(key string) !string
 ```
 
 get is an alternative to os.getenv when you need fallback handling

@@ -1,4 +1,4 @@
-# vdotenv
+# dotenv
 People configure their app variables via JSON, YAML, or even gitignored .v files. I personally found env files to work the best, especially with [docker-compose](https://docs.docker.com/compose/environment-variables/#the-env_file-configuration-option).
 
 Further reading:
@@ -7,9 +7,9 @@ Further reading:
 ## Features
 
 - fully compatible with docker-compose .env
-- useful helper function vdotenv.get()
-- vdotenv.required() method to let people know what variables are needed
-- automatically create missing .env file with blank required fields when working with vdotenv.required() for an easy setup
+- useful helper function dotenv.get()
+- dotenv.required() method to let people know what variables are needed
+- automatically create missing .env file with blank required fields when working with dotenv.required() for an easy setup
 - support `export` keyword so you can `source .env` in your project specific shell scripts
 
 ## Usage
@@ -31,19 +31,19 @@ Then in your v source:
 ```v
 module main
 
-import treffner.vdotenv
+import thomaspeissl.dotenv
 import os
 
 fn main() {
     // load .env environment file
-    vdotenv.load()
+    dotenv.load()
     // optional check if required keys have values - error if something is missing
     // this also creates the .env file with the requested variables for an easy setup
-    vdotenv.required('POSTGRES_HOST', 'POSTGRES_USER', 'POSTGRES_PASSWORD', 'POSTGRES_DB')
+    dotenv.required('POSTGRES_HOST', 'POSTGRES_USER', 'POSTGRES_PASSWORD', 'POSTGRES_DB')
     // you can use build-in os.getenv()
     println(os.getenv('POSTGRES_HOST'))
-    // you can also use vdotenv.get() if you need fallback handling
-    secret := vdotenv.get('JWT_SECRET') or {
+    // you can also use dotenv.get() if you need fallback handling
+    secret := dotenv.get('JWT_SECRET') or {
         'default_dev_token' // default, not found, or simply the same on all environments
     }
     println(secret)
@@ -53,7 +53,7 @@ fn main() {
 ## Syntax rules
 These syntax rules apply to the .env file:
 
-- vdotenv expects each line in an env file to be in VAR=VAL format.
+- dotenv expects each line in an env file to be in VAR=VAL format.
 - Lines beginning with # are processed as comments and ignored.
 - Blank lines are ignored.
 - There is no special handling of quotation marks. This means that they are part of the VAL.
@@ -62,11 +62,11 @@ These syntax rules apply to the .env file:
 
 Note that there is also another dotenv module with more relaxed syntax rules (eg. inline comments) available 
 https://vpm.vlang.io/mod/zztkm.vdotenv.  
-We cannot relax these because we would lose docker .env compatibility.
+We cannot relax these rules because we would lose docker .env compatibility.
 
 ## Installation
 
-### Install and use vdotenv module as a dependency via v.mod (recommended)
+### Install and use dotenv module as a dependency via v.mod (recommended)
 
 Run "v init" to auto-generate your v.mod file.
 ```shell
@@ -74,7 +74,7 @@ v init
 ```
 Then edit the dependencies in your v.mod file to look like this: 
 ```v
-dependencies: ['treffner.vdotenv']
+dependencies: ['thomaspeissl.dotenv']
 ```
 And install with:
 ```shell
@@ -84,12 +84,12 @@ To update your dependencies later just run "v install" again.
 
 ### Or via VPM:
 ```shell
-v install treffner.vdotenv
+v install thomaspeissl.dotenv
 ```
 
 ### Or through Git:
 ```shell
-git clone https://github.com/thomaspeissl/vdotenv.git ~/.vmodules/treffner/vdotenv
+git clone https://github.com/thomaspeissl/vdotenv.git ~/.vmodules/thomaspeissl/dotenv
 ```
 
 ## Test with docker-compose
